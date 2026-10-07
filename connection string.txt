@@ -1,0 +1,12 @@
+postgresql://postgres:EUPMX7wnYS-aGx9@db.lrskqwljvtgdaoexyvem.supabase.co:5432/postgres
+
+`postgresql://postgres:EUPMX7wnYS-aGx9@db.lrskqwljvtgdaoexyvem.s...`
+
+DATABASE_URL=postgresql://neondb_owner:npg_mKs4ZnFCNMg2@ep-sweet-shape-awcpxsl2-pooler.c-12.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+s
+
+
+DATABASE_URL=postgresql://postgres:EUPMX7wnYS-aGx9@db.lrskqwljvtgdaoexyvem.supabase.co:5432/postgres
+
+
+

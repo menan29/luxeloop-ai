@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@custom-variant dark (&:is(.dark *));
+@theme inline {
+  --font-sans:var(--font-manrope); --font-serif:var(--font-cormorant);
+  --color-background:var(--background); --color-foreground:var(--foreground); --color-card:var(--card); --color-card-foreground:var(--card-foreground); --color-popover:var(--popover); --color-popover-foreground:var(--popover-foreground); --color-primary:var(--primary); --color-primary-foreground:var(--primary-foreground); --color-secondary:var(--secondary); --color-secondary-foreground:var(--secondary-foreground); --color-muted:var(--muted); --color-muted-foreground:var(--muted-foreground); --color-accent:var(--accent); --color-accent-foreground:var(--accent-foreground); --color-destructive:var(--destructive); --color-border:var(--border); --color-input:var(--input); --color-ring:var(--ring);
+  --radius-sm:calc(var(--radius) - 4px); --radius-md:calc(var(--radius) - 2px); --radius-lg:var(--radius); --radius-xl:calc(var(--radius) + 4px); --radius-2xl:calc(var(--radius) + 8px); --radius-3xl:calc(var(--radius) + 12px);
+}
+:root { color-scheme:light; --radius:.75rem; --background:#f7f6f2; --foreground:#111111; --card:#ffffff; --card-foreground:#111111; --popover:#ffffff; --popover-foreground:#111111; --primary:#111111; --primary-foreground:#ffffff; --secondary:#ebe9e2; --secondary-foreground:#111111; --muted:#ebe9e2; --muted-foreground:#65635e; --accent:#b5942f; --accent-foreground:#111111; --destructive:#a73333; --border:#dedbd2; --input:#dedbd2; --ring:#b5942f; }
+.dark { color-scheme:dark; --background:#111111; --foreground:#f7f6f2; --card:#191919; --card-foreground:#f7f6f2; --popover:#191919; --popover-foreground:#f7f6f2; --primary:#f7f6f2; --primary-foreground:#111111; --secondary:#272727; --secondary-foreground:#f7f6f2; --muted:#272727; --muted-foreground:#aaa79e; --accent:#d4af37; --accent-foreground:#111111; --destructive:#d05b5b; --border:#343434; --input:#343434; --ring:#d4af37; }
+@layer base { * { @apply border-border outline-ring/50; } body { @apply bg-background text-foreground; } }
+html { scroll-behavior:smooth; } ::selection { background:var(--accent); color:var(--accent-foreground); }

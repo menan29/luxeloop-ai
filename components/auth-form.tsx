@@ -1,0 +1,11 @@
+"use client"
+import { useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { LoaderCircle } from "lucide-react"
+import { toast } from "sonner"
+import { Button } from "@/components/ui/button"
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { authClient } from "@/lib/auth-client"
+export function AuthForm({mode}:{mode:"sign-in"|"sign-up"}){const router=useRouter();const [pending,setPending]=useState(false);async function submit(formData:FormData){setPending(true);const email=String(formData.get("email"));const password=String(formData.get("password"));const result=mode==="sign-up"?await authClient.signUp.email({name:String(formData.get("name")),email,password}):await authClient.signIn.email({email,password});setPending(false);if(result.error){toast.error(result.error.message||"Could not continue");return}router.push("/dashboard");router.refresh()}return <form action={submit}><FieldGroup>{mode==="sign-up"&&<Field><FieldLabel htmlFor="name">Name</FieldLabel><Input id="name" name="name" required autoComplete="name"/></Field>}<Field><FieldLabel htmlFor="email">Email</FieldLabel><Input id="email" name="email" type="email" required autoComplete="email"/></Field><Field><div className="flex items-center justify-between"><FieldLabel htmlFor="password">Password</FieldLabel>{mode==="sign-in"&&<Link href="#" className="text-xs text-muted-foreground">Forgot password?</Link>}</div><Input id="password" name="password" type="password" minLength={8} required autoComplete={mode==="sign-in"?"current-password":"new-password"}/></Field><Button size="lg" disabled={pending}>{pending&&<LoaderCircle className="animate-spin" data-icon="inline-start"/>}{mode==="sign-in"?"Sign in":"Create account"}</Button><p className="text-center text-sm text-muted-foreground">{mode==="sign-in"?"New to the loop? ":"Already a member? "}<Link href={mode==="sign-in"?"/signup":"/login"} className="text-foreground underline">{mode==="sign-in"?"Create account":"Sign in"}</Link></p></FieldGroup></form>}
